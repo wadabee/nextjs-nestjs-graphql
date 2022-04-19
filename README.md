@@ -11,5 +11,6 @@ Sample project by Next.js, Nest.js with GraphQL
 
 ### Backend
 * Next.js
+* Prisma
 
 
