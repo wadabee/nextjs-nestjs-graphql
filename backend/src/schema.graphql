@@ -3,10 +3,19 @@
 # ------------------------------------------------------
 
 type User {
-  id: ID!
+  id: String!
   name: String!
 }
 
 type Query {
   user(id: String!): User!
+}
+
+type Mutation {
+  createUser(data: UserCreateInput!): User!
+}
+
+input UserCreateInput {
+  id: String!
+  name: String!
 }
