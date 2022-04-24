@@ -7,15 +7,35 @@ type User {
   name: String!
 }
 
+type Article {
+  id: ID!
+  title: String!
+  body: String!
+  comments: Comment
+}
+
+type Comment {
+  id: ID!
+  body: String!
+}
+
 type Query {
   user(id: String!): User!
+  articles: [Article!]!
+  article(id: String!): Article!
 }
 
 type Mutation {
   createUser(data: UserCreateInput!): User!
+  createArticle(data: ArticleCreateInput!): Article!
 }
 
 input UserCreateInput {
   id: String!
   name: String!
+}
+
+input ArticleCreateInput {
+  title: String!
+  body: String!
 }
