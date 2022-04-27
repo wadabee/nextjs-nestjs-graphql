@@ -6,8 +6,10 @@
 Sample project by Next.js, Nest.js with GraphQL 
 
 ## Tech stack
-### Frontends(Not started yet)
+### Frontends
 * Next.js
+* Apollo Client
+* graphql-codegen
 
 ### Backend
 * Next.js
