@@ -6,6 +6,8 @@
 Sample project by Next.js, Nest.js with GraphQL 
 
 ## Tech stack
+### Common
+* yarn workspace
 ### Frontends
 * Next.js
 * Apollo Client

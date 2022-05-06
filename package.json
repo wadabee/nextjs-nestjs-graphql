@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "docker:up": "yarn workspace backend run docker:up"
+  }
+}
