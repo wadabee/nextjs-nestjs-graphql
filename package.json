@@ -1,9 +1,15 @@
 {
   "private": true,
-  "workspaces": [
-    "backend",
-    "frontend"
-  ],
+  "workspaces": {
+    "packages": [
+      "backend",
+      "frontend"
+    ],
+    "nohoist": [
+      "**/@nestjs",
+      "**/@nestjs/**"
+    ]
+  },
   "scripts": {
     "docker:up": "yarn workspace backend run docker:up"
   }
