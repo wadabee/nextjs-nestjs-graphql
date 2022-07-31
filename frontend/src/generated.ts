@@ -81,7 +81,7 @@ export type UserCreateInput = {
 export type ArticlesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ArticlesQuery = { __typename?: 'Query', articles: Array<{ __typename?: 'Article', id: string, title: string, body: string, comments?: { __typename?: 'Comment', id: string } | null }> };
+export type ArticlesQuery = { __typename?: 'Query', articles: Array<{ __typename?: 'Article', id: string, title: string, body: string }> };
 
 
 export const ArticlesDocument = gql`
@@ -90,9 +90,6 @@ export const ArticlesDocument = gql`
     id
     title
     body
-    comments {
-      id
-    }
   }
 }
     `;

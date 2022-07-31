@@ -3,8 +3,5 @@ query articles {
     id
     title
     body
-    comments {
-      id
-    }
   }
 }
