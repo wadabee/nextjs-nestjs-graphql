@@ -4,9 +4,10 @@ import { Article } from "../../../src/generated";
 
 type Props = {
   article: Article;
+  onClick: (id: string) => void;
 };
 
-export const CardArticle: React.FC<Props> = ({ article }) => {
+export const CardArticle: React.FC<Props> = ({ article, onClick }) => {
   const [shadow, setShadow] = useState("none");
 
   const handleMouseOver = () => {
@@ -14,6 +15,9 @@ export const CardArticle: React.FC<Props> = ({ article }) => {
   };
   const handleMouseOut = () => {
     setShadow("none");
+  };
+  const handleClick = () => {
+    onClick(article.id);
   };
 
   return (
@@ -28,6 +32,7 @@ export const CardArticle: React.FC<Props> = ({ article }) => {
       shadow={shadow}
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
+      onClick={handleClick}
     >
       <Heading size="md" ml={1}>
         {article.title}
