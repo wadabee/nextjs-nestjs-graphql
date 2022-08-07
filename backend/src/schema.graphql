@@ -11,7 +11,7 @@ type Article {
   id: ID!
   title: String!
   body: String!
-  comments: Comment
+  comments: [Comment!]
 }
 
 type Comment {
@@ -28,6 +28,7 @@ type Query {
 type Mutation {
   createUser(data: UserCreateInput!): User!
   createArticle(data: ArticleCreateInput!): Article!
+  createCommnet(data: CommentCreateInput!): Comment!
 }
 
 input UserCreateInput {
@@ -37,5 +38,10 @@ input UserCreateInput {
 
 input ArticleCreateInput {
   title: String!
+  body: String!
+}
+
+input CommentCreateInput {
+  articleId: String!
   body: String!
 }

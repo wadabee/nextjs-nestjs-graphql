@@ -17,6 +17,11 @@ export interface ArticleCreateInput {
     body: string;
 }
 
+export interface CommentCreateInput {
+    articleId: string;
+    body: string;
+}
+
 export interface User {
     id: string;
     name: string;
@@ -26,7 +31,7 @@ export interface Article {
     id: string;
     title: string;
     body: string;
-    comments?: Nullable<Comment>;
+    comments?: Nullable<Comment[]>;
 }
 
 export interface Comment {
@@ -43,6 +48,7 @@ export interface IQuery {
 export interface IMutation {
     createUser(data: UserCreateInput): User | Promise<User>;
     createArticle(data: ArticleCreateInput): Article | Promise<Article>;
+    createCommnet(data: CommentCreateInput): Comment | Promise<Comment>;
 }
 
 type Nullable<T> = T | null;

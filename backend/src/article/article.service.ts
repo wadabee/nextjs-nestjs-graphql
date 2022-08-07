@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { Article, Prisma } from '@prisma/client';
+import { Article, Comment, Prisma } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { CommentCreateInput } from './model/article.model';
 
 @Injectable()
 export class ArticleService {
@@ -16,8 +17,22 @@ export class ArticleService {
     return this.prisma.article.findUnique({ where: uniqueInput });
   }
 
+  getCommentsByArticleId(articleId: string): Promise<Comment[] | null> {
+    return this.prisma.comment.findMany({
+      where: {
+        articleId,
+      },
+    });
+  }
+
   createArticle(data: Prisma.ArticleCreateInput): Promise<Article> {
     return this.prisma.article.create({
+      data,
+    });
+  }
+
+  addComment(data: CommentCreateInput): Promise<Comment> {
+    return this.prisma.comment.create({
       data,
     });
   }

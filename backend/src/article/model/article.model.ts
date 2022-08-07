@@ -8,7 +8,7 @@ export class Article {
   title: string;
   @Field()
   body: string;
-  @Field((type) => Comment)
+  @Field((type) => [Comment])
   comments?: Comment[];
 }
 
@@ -24,6 +24,14 @@ export class Comment {
 export class ArticleCreateInput {
   @Field()
   title: string;
+  @Field()
+  body: string;
+}
+
+@InputType()
+export class CommentCreateInput {
+  @Field()
+  articleId: string;
   @Field()
   body: string;
 }
