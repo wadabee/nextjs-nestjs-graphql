@@ -11,5 +11,9 @@ query article($id: String!) {
     id
     title
     body
+    comments {
+      id
+      body
+    }
   }
 }

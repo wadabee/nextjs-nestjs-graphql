@@ -18,7 +18,7 @@ export type Scalars = {
 export type Article = {
   __typename?: 'Article';
   body: Scalars['String'];
-  comments?: Maybe<Comment>;
+  comments?: Maybe<Array<Comment>>;
   id: Scalars['ID'];
   title: Scalars['String'];
 };
@@ -88,7 +88,7 @@ export type ArticleQueryVariables = Exact<{
 }>;
 
 
-export type ArticleQuery = { __typename?: 'Query', article: { __typename?: 'Article', id: string, title: string, body: string } };
+export type ArticleQuery = { __typename?: 'Query', article: { __typename?: 'Article', id: string, title: string, body: string, comments?: Array<{ __typename?: 'Comment', id: string, body: string }> | null } };
 
 
 export const ArticlesDocument = gql`
@@ -133,6 +133,10 @@ export const ArticleDocument = gql`
     id
     title
     body
+    comments {
+      id
+      body
+    }
   }
 }
     `;
