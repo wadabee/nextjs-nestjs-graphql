@@ -3,8 +3,8 @@ import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useMemo } from "react";
 import { useAddCommentMutation, useArticleQuery } from "../../../src/generated";
-import CardComment from "../../components/article/CardComment";
-import RegisterComment from "../../components/article/CardRegisterComment";
+import CardComment from "../../../components/article/CardComment";
+import RegisterComment from "../../../components/article/CardRegisterComment";
 
 const Article: NextPage = () => {
   const router = useRouter();

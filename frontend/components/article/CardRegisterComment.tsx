@@ -1,6 +1,6 @@
 import { Button, Textarea } from "@chakra-ui/react";
 import React, { useCallback, useState } from "react";
-import { useAddCommentMutation } from "../../../src/generated";
+import { useAddCommentMutation } from "../../src/generated";
 import Card from "../basic/Card";
 
 type Props = {

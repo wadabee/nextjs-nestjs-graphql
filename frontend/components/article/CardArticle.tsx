@@ -1,6 +1,6 @@
 import { Box, Heading, Text } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { Article } from "../../../src/generated";
+import { Article } from "../../src/generated";
 
 type Props = {
   article: Article;

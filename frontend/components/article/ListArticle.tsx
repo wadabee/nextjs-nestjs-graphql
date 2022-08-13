@@ -1,6 +1,6 @@
 import { SimpleGrid } from "@chakra-ui/react";
 import React from "react";
-import { useArticlesQuery } from "../../../src/generated";
+import { useArticlesQuery } from "../../src/generated";
 import CardArticle from "./CardArticle";
 
 type Props = {

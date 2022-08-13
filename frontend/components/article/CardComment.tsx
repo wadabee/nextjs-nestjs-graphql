@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import React from "react";
-import { Comment } from "../../../src/generated";
+import { Comment } from "../../src/generated";
 import Card from "../basic/Card";
 
 type Props = {
