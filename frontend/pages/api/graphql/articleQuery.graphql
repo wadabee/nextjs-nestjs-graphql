@@ -17,3 +17,10 @@ query article($id: String!) {
     }
   }
 }
+
+mutation addComment($articleId: String!, $body: String!) {
+  createCommnet(data: { articleId: $articleId, body: $body }) {
+    id
+    body
+  }
+}

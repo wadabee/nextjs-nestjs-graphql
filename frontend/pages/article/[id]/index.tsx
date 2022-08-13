@@ -3,6 +3,8 @@ import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useMemo } from "react";
 import { useArticleQuery } from "../../../src/generated";
+import CardComment from "../../components/article/CardComment";
+import RegisterComment from "../../components/article/CardRegisterComment";
 
 const Article: NextPage = () => {
   const router = useRouter();
@@ -25,21 +27,15 @@ const Article: NextPage = () => {
         <Box p={3}>
           {comments.length > 0 ? (
             comments.map((comment) => (
-              <Box
-                key={comment.id}
-                borderWidth="thin"
-                borderRadius="md"
-                mb={2}
-                p={1}
-              >
-                {comment.body}
+              <Box key={comment.id} mb={2}>
+                <CardComment comment={comment} />
               </Box>
             ))
           ) : (
             <Text as="em">no comments</Text>
           )}
 
-          <Button colorScheme="blue">Add Comment</Button>
+          <RegisterComment articleId={data?.article.id ?? ""} />
         </Box>
       </Box>
     </Box>

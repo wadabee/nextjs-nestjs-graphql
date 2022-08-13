@@ -34,15 +34,26 @@ export type Comment = {
   id: Scalars['ID'];
 };
 
+export type CommentCreateInput = {
+  articleId: Scalars['String'];
+  body: Scalars['String'];
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   createArticle: Article;
+  createCommnet: Comment;
   createUser: User;
 };
 
 
 export type MutationCreateArticleArgs = {
   data: ArticleCreateInput;
+};
+
+
+export type MutationCreateCommnetArgs = {
+  data: CommentCreateInput;
 };
 
 
@@ -89,6 +100,14 @@ export type ArticleQueryVariables = Exact<{
 
 
 export type ArticleQuery = { __typename?: 'Query', article: { __typename?: 'Article', id: string, title: string, body: string, comments?: Array<{ __typename?: 'Comment', id: string, body: string }> | null } };
+
+export type AddCommentMutationVariables = Exact<{
+  articleId: Scalars['String'];
+  body: Scalars['String'];
+}>;
+
+
+export type AddCommentMutation = { __typename?: 'Mutation', createCommnet: { __typename?: 'Comment', id: string, body: string } };
 
 
 export const ArticlesDocument = gql`
@@ -168,3 +187,38 @@ export function useArticleLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Ar
 export type ArticleQueryHookResult = ReturnType<typeof useArticleQuery>;
 export type ArticleLazyQueryHookResult = ReturnType<typeof useArticleLazyQuery>;
 export type ArticleQueryResult = Apollo.QueryResult<ArticleQuery, ArticleQueryVariables>;
+export const AddCommentDocument = gql`
+    mutation addComment($articleId: String!, $body: String!) {
+  createCommnet(data: {articleId: $articleId, body: $body}) {
+    id
+    body
+  }
+}
+    `;
+export type AddCommentMutationFn = Apollo.MutationFunction<AddCommentMutation, AddCommentMutationVariables>;
+
+/**
+ * __useAddCommentMutation__
+ *
+ * To run a mutation, you first call `useAddCommentMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAddCommentMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [addCommentMutation, { data, loading, error }] = useAddCommentMutation({
+ *   variables: {
+ *      articleId: // value for 'articleId'
+ *      body: // value for 'body'
+ *   },
+ * });
+ */
+export function useAddCommentMutation(baseOptions?: Apollo.MutationHookOptions<AddCommentMutation, AddCommentMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<AddCommentMutation, AddCommentMutationVariables>(AddCommentDocument, options);
+      }
+export type AddCommentMutationHookResult = ReturnType<typeof useAddCommentMutation>;
+export type AddCommentMutationResult = Apollo.MutationResult<AddCommentMutation>;
+export type AddCommentMutationOptions = Apollo.BaseMutationOptions<AddCommentMutation, AddCommentMutationVariables>;
