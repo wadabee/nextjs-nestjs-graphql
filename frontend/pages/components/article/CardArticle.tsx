@@ -7,7 +7,7 @@ type Props = {
   onClick: (id: string) => void;
 };
 
-export const CardArticle: React.FC<Props> = ({ article, onClick }) => {
+const CardArticle: React.FC<Props> = ({ article, onClick }) => {
   const [shadow, setShadow] = useState("none");
 
   const handleMouseOver = () => {
@@ -44,3 +44,5 @@ export const CardArticle: React.FC<Props> = ({ article, onClick }) => {
     </Box>
   );
 };
+
+export default CardArticle;

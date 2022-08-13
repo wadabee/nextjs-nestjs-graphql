@@ -1,13 +1,13 @@
 import { SimpleGrid } from "@chakra-ui/react";
 import React from "react";
 import { useArticlesQuery } from "../../../src/generated";
-import { CardArticle } from "./CardArticle";
+import CardArticle from "./CardArticle";
 
 type Props = {
   onClick: (id: string) => void;
 };
 
-export const ListArticle: React.FC<Props> = ({ onClick }) => {
+const ListArticle: React.FC<Props> = ({ onClick }) => {
   const { data } = useArticlesQuery();
 
   return (
@@ -20,3 +20,5 @@ export const ListArticle: React.FC<Props> = ({ onClick }) => {
     </SimpleGrid>
   );
 };
+
+export default ListArticle;
