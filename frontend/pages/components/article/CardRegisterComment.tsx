@@ -5,20 +5,16 @@ import Card from "../basic/Card";
 
 type Props = {
   articleId: string;
+  loading?: boolean;
+  onRegister: (articleId: string, comment: string) => Promise<any>;
 };
 
-const CardRegisterComment: React.FC<Props> = ({ articleId }) => {
+const CardRegisterComment: React.FC<Props> = ({
+  articleId,
+  loading,
+  onRegister,
+}) => {
   const [comment, setComment] = useState("");
-  const [addComment, { data, loading }] = useAddCommentMutation();
-
-  const handleAdd = useCallback(() => {
-    addComment({
-      variables: {
-        articleId,
-        body: comment,
-      },
-    });
-  }, [addComment, articleId, comment]);
 
   return (
     <Card>
@@ -28,7 +24,15 @@ const CardRegisterComment: React.FC<Props> = ({ articleId }) => {
         value={comment}
         onChange={(e) => setComment(e.target.value)}
       />
-      <Button colorScheme="blue" onClick={handleAdd}>
+      <Button
+        colorScheme="blue"
+        isLoading={loading ?? false}
+        onClick={() => {
+          onRegister(articleId, comment).then(() => {
+            setComment("");
+          });
+        }}
+      >
         Add Comment
       </Button>
     </Card>
